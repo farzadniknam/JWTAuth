@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWTAuth", "JWTAuth\JWTAuth.csproj", "{EDF68F0C-FA00-4B41-A698-6B02C2C8160B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWTAuth.Data", "JWTAuth.Data\JWTAuth.Data.csproj", "{4BD06414-333B-4430-980E-D6AC0B0F5DF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JWTAuth.Common", "JWTAuth.Common\JWTAuth.Common.csproj", "{93D13CB3-6F80-45E0-A004-1F07BEDAAE42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDF68F0C-FA00-4B41-A698-6B02C2C8160B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF68F0C-FA00-4B41-A698-6B02C2C8160B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF68F0C-FA00-4B41-A698-6B02C2C8160B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF68F0C-FA00-4B41-A698-6B02C2C8160B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD06414-333B-4430-980E-D6AC0B0F5DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD06414-333B-4430-980E-D6AC0B0F5DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD06414-333B-4430-980E-D6AC0B0F5DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD06414-333B-4430-980E-D6AC0B0F5DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D13CB3-6F80-45E0-A004-1F07BEDAAE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D13CB3-6F80-45E0-A004-1F07BEDAAE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D13CB3-6F80-45E0-A004-1F07BEDAAE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D13CB3-6F80-45E0-A004-1F07BEDAAE42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EB4AC62-DD35-460C-AE97-7C3D819BDD09}
+	EndGlobalSection
+EndGlobal
