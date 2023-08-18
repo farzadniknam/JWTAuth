@@ -101,3 +101,32 @@ Here's a high-level example of how JWT authentication is configured in ASP.NET C
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/4a3c1f35-1b78-42c7-a25d-1b95f039366e)
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/7bd95a97-8ae7-4604-9133-6842370efd80)
 
+Within the realm of the API, I am poised to infuse my Authorization Model, injecting a robust layer of control. Notably, for this project, I have introduced a straightforward User Entity. It's worth acknowledging that in a genuine project, the AspNetUser Authentication entities would naturally come to the fore.
+
+Following the orchestration of a seamlessly flowing RESTful API, my trajectory leads me to introduce a ClassLibrary project, dedicated to crafting the Data Layer project. Within this domain, the canvas becomes adorned with Entities and Repositories, gracefully complemented by the UnitOfWorkFilter class, a component whose significance I shall demystify in an upcoming article. The final touch is the Context, weaving together the fabric of this data-driven symphony.
+In the JWTAuth API Project, as vividly demonstrated in the image below, I have strategically incorporated the AuthorizationContext. This addition serves the purpose of enabling user creation from the API into the database, employing the potent code-first technique. 
+
+Migration Authentication Entities
+In our determined pursuit of this objective, the installation of the subsequent NuGet Packages becomes imperative. It's noteworthy that I am utilizing PostgreSQL in this context.
+Microsoft.EntityFrameworkCore
+Microsoft.EntityFrameworkCore.Design
+Npgsql.EntityFrameworkCore.PostgreSQL
+Microsoft.EntityFrameworkCore.Post
+Microsoft.AspNetCore.Authentication.JwtBearer
+
+For making first migration for authentication entities we must put our PostgreSQL connection string inside appsettings.json as below
+```ruby
+"ConnectionStrings": {
+    "SurveyConnectionString": "Host=localhost;Port=5432;Database=SurveyAuth;Username=postgres;Password=*****;"
+  },
+"AppSettings": {
+    "SomeSetting": "SomeValue",
+    "AnotherSetting": "AnotherValue",
+    "ConnectionString": "Host=localhost;Port=5432;Database=SurveyAuth;Username=postgres;Password=*****;"
+  },
+```
+  
+In the subsequent steps, as we proceed with the installation of the required NuGet packages and input the necessary requirements into the appsettings.json file, we will also incorporate Dependency Injection for our DataContext.
+To enhance the readability of the program code, I've organized the content into separate classes and integrated them into Program.cs. The structure of my project is as follows:
+![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/66c9416d-fdc9-4e90-8723-5b518965b4d5)
+
