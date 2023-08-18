@@ -112,9 +112,13 @@ In the JWTAuth API Project, as vividly demonstrated in the image below, I have s
 In our determined pursuit of this objective, the installation of the subsequent NuGet Packages becomes imperative. It's noteworthy that I am utilizing PostgreSQL in this context.
 
 Microsoft.EntityFrameworkCore
+
 Microsoft.EntityFrameworkCore.Design
+
 Npgsql.EntityFrameworkCore.PostgreSQL
+
 Microsoft.IdentityModel.Tokens
+
 Microsoft.AspNetCore.Authentication.JwtBearer
 
 
