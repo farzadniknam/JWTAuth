@@ -114,8 +114,9 @@ In our determined pursuit of this objective, the installation of the subsequent 
 Microsoft.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.Design
 Npgsql.EntityFrameworkCore.PostgreSQL
-Microsoft.IdentityModel.Tokens
+Microsoft.EntityFrameworkCore.Post
 Microsoft.AspNetCore.Authentication.JwtBearer
+
 
 For making first migration for authentication entities we must put our PostgreSQL connection string inside appsettings.json as below
 ```ruby
