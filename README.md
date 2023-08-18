@@ -114,7 +114,7 @@ In our determined pursuit of this objective, the installation of the subsequent 
 Microsoft.EntityFrameworkCore
 Microsoft.EntityFrameworkCore.Design
 Npgsql.EntityFrameworkCore.PostgreSQL
-Microsoft.EntityFrameworkCore.Post
+Microsoft.IdentityModel.Tokens
 Microsoft.AspNetCore.Authentication.JwtBearer
 
 
