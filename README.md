@@ -372,9 +372,11 @@ I have successfully installed OpenSSL on my computer and incorporated its instal
 With this configuration in place, you can effortlessly generate new encryption keys at any time by utilizing commands like the following within the "Windows Power Shell" or "Command Prompt."
 
 Windows Power Shell
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/80a29ae2-5615-4950-98e6-e16e3e0c1c3d)
 
 Command Prompt
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/c4291d3e-6fe3-422c-970b-a7bbda964e44)
 
 Through the utilization of OpenSSL, you have the capability to generate various types of encryption keys.
@@ -632,21 +634,27 @@ namespace JWTAuth.Controllers
 
 Build your solution and run JWTAuth RESTful Api project.
 As it shown in the picture Swagger appears like this.
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/a29e6e05-de9b-4c63-bbb9-cb1f0a14b09b)
 
 Should you attempt to access the methods within this page without generating a valid token, an unauthorized error will be encountered. This security measure guarantees that only authorized users can interact with the Survey's methods.
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/e6ff2d41-3389-488c-a807-7bb5c50458a4)
 
 I copied the generated token and entered it into the designated input area within the popup page, accessed by clicking on the "Authorize" button.
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/d8951dce-b47c-4ec1-a154-951c47f477ea)
 
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/d9cf3966-d6ff-4752-a242-3c21705d38e2)
+
 Click on **Authorize** button and then close the popup.
 
 Now, you can attempt to execute the methods within the SurveyController. By clicking on the respective SurveyController method, if your token is valid, the method will return the expected result values. Conversely, if the token is invalid, an "Unauthorized" error will be encountered.
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/1fb7ff0d-75ea-4556-b5ba-d007881fa6ca)
 
 In certain scenarios, even after meticulously completing all the requisite steps within the Swagger page, including the generation of tokens in the authorization segment, an unexpected hurdle may arise during the execution of Get/Post programs. At this juncture, the program endeavors to validate the token, only to be met with an exception, which is visually depicted in the subsequent image.
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/a7e87f96-4395-48ea-904c-ba463d995e49)
 
 In certain instances, a crucial element was absent: the System.IdentityModel.Tokens.Jwt NuGet package. Astonishingly, despite a seamless compilation and execution process, the API testing phase revealed a significant hiccup in the form of an 'invalid token' error. Remarkably, the simple installation of the System.IdentityModel.Tokens.Jwt package breath life into the solution, seamlessly rectifying the issue without necessitating a single alteration to the codebase. You can also refere to following link to get more information.
