@@ -108,7 +108,7 @@ Within the realm of the API, I am poised to infuse my Authorization Model, injec
 Following the orchestration of a seamlessly flowing RESTful API, my trajectory leads me to introduce a ClassLibrary project, dedicated to crafting the Data Layer project. Within this domain, the canvas becomes adorned with Entities and Repositories, gracefully complemented by the UnitOfWorkFilter class. The final touch is the Context, weaving together the fabric of this data-driven symphony.
 In the JWTAuth API Project, as vividly demonstrated in the image below, I have strategically incorporated the AuthorizationContext. This addition serves the purpose of enabling user creation from the API into the database, employing the potent code-first technique. 
 
-Migration Authentication Entities
+## Migration Authentication Entities
 In our determined pursuit of this objective, the installation of the subsequent NuGet Packages becomes imperative. It's noteworthy that I am utilizing PostgreSQL in this context.
 
 Microsoft.EntityFrameworkCore
