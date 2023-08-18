@@ -225,22 +225,22 @@ namespace JWTAuth.Extensions
         {
 
             serviceCollection.AddScoped<IDbTransaction>(serviceProvider =>
-{
-    var connectionStringProvider = serviceProvider.GetService<IConnectionStringProvider>();
-    var connection = new NpgsqlConnection(_appSettings.ConnectionString);
-
-    if (connection.State != ConnectionState.Open)
-        connection.Open();
-
-    return connection.BeginTransaction(level);
-});
-
-serviceCollection.AddScoped(typeof(UnitOfWorkFilter), typeof(UnitOfWorkFilter));
-
-serviceCollection.AddMvc(setup =>
-{
-    setup.Filters.AddService<UnitOfWorkFilter>(1);
-});
+            {
+                var connectionStringProvider = serviceProvider.GetService<IConnectionStringProvider>();
+                var connection = new NpgsqlConnection(_appSettings.ConnectionString);
+            
+                if (connection.State != ConnectionState.Open)
+                    connection.Open();
+            
+                return connection.BeginTransaction(level);
+            });
+            
+            serviceCollection.AddScoped(typeof(UnitOfWorkFilter), typeof(UnitOfWorkFilter));
+            
+            serviceCollection.AddMvc(setup =>
+            {
+                setup.Filters.AddService<UnitOfWorkFilter>(1);
+            });
         }
     }
 }
@@ -280,7 +280,9 @@ dotnet ef migrations add 'AuthFirstMigration'
 ```
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/0d6c6edb-a108-4694-aa7c-8c5a74866ea8)
 Upon executing this command, the system will generate a 'Migrations' folder within the JWTAuth project, containing the necessary migration classes.
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/d1c0fec6-6483-4c5e-80b5-b7e4fa07ee0b)
+
 By utilizing the command below, our database containing authentication tables will be created within PostgreSQL.
 ```ruby
 dotnet ef database update -c AuthorizeContexts
