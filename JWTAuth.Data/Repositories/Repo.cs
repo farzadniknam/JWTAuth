@@ -35,11 +35,11 @@ namespace JWTAuth.Data.Repositories
         /// Get All
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<TEntity>> GetAllAsync<TEntity>() where TEntity : class
+        public async Task<IEnumerable<T>> GetAllAsync()
         {
             try
             {
-                return await _conn.QueryAllAsync<TEntity>();
+                return await _conn.QueryAllAsync<T>();
             }
             catch (Exception exp)
             {
@@ -52,14 +52,11 @@ namespace JWTAuth.Data.Repositories
         /// Get 
         /// </summary>
         /// <returns></returns>
-        public async Task<TEntity> GetAsync<TEntity, TTranslate>(int Id,
-                                                                    bool doTranslate = true)
-                                                                    where TEntity : class
-                                                                    where TTranslate : class
+        public async Task<T> GetAsync(int Id)
         {
             try
             {
-                var retValue = await _conn.QueryAsync<TEntity>(Id);
+                var retValue = await _conn.QueryAsync<T>(Id);
                 return retValue?.FirstOrDefault();
             }
             catch (Exception exp)

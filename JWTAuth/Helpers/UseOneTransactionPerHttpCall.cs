@@ -1,11 +1,10 @@
 ﻿using JWTAuth.Common.Helper;
 using JWTAuth.Data.Repositories;
-using JWTAuth.Helpers;
 using JWTAuth.Services;
 using Npgsql;
 using System.Data;
 
-namespace JWTAuth.Extensions
+namespace JWTAuth.Helpers
 {
     public static class ServiceCollectionExtensions
     {

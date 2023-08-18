@@ -1,8 +1,10 @@
 ﻿using JWTAuth.Common.Helper;
+using JWTAuth.Data.Repositories.GeneralRepositories;
 using JWTAuth.Extensions;
 using JWTAuth.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using RepoDb;
 
 namespace JWTAuth.Helpers
 {
@@ -23,6 +25,8 @@ namespace JWTAuth.Helpers
 
             serviceProvider.Dispose();
 
+            PostgreSqlBootstrap.Initialize();
+            builder.Services.AddScoped<ISurveyRepo, SurveyRepo>();
             builder.Services.UseOneTransactionPerHttpCall(appSettings);
 
         }
