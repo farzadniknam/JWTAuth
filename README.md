@@ -377,11 +377,11 @@ You have the flexibility to generate your new encryption key using any preferred
 ## Setup JWT
 To set up and effectively utilize JWT, it is imperative to install the following NuGet Packages within the RESTful API project:
 
-***Microsoft.AspNetCore.Authentication.JwtBearer***
+**Microsoft.AspNetCore.Authentication.JwtBearer**
 
-***Microsoft.IdentityModel.Tokens***
+**Microsoft.IdentityModel.Tokens**
 
-***System.IdentityModel.Tokens.Jwt***
+**System.IdentityModel.Tokens.Jwt**
 
 Now, to achieve my objective of configuring the "Authentication" and "JwtBearer" properties, I have created a distinct static class that contains the necessary code block. This block of code is then called within the Program.cs file to execute the required setup.
 
