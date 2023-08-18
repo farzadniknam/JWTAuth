@@ -111,14 +111,15 @@ In the JWTAuth API Project, as vividly demonstrated in the image below, I have s
 ## Migration Authentication Entities
 In our determined pursuit of this objective, the installation of the subsequent NuGet Packages becomes imperative. It's noteworthy that I am utilizing PostgreSQL in this context.
 
-Microsoft.EntityFrameworkCore
+**Microsoft.EntityFrameworkCore**
 
-Microsoft.EntityFrameworkCore.Design
+**Microsoft.EntityFrameworkCore.Design**
 
-Npgsql.EntityFrameworkCore.PostgreSQL
+**Npgsql.EntityFrameworkCore.PostgreSQL**
 
-Microsoft.IdentityModel.Tokens
-Microsoft.AspNetCore.Authentication.JwtBearer
+**Microsoft.IdentityModel.Tokens**
+
+**Microsoft.AspNetCore.Authentication.JwtBearer**
 
 
 For making first migration for authentication entities we must put our PostgreSQL connection string inside appsettings.json as below
