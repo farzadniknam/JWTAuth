@@ -98,12 +98,14 @@ Use HTTPS to encrypt communication.
 Limit the amount of sensitive information stored in the token.
 
 ### Here's a high-level example of how JWT authentication is configured in ASP.NET Core
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/4a3c1f35-1b78-42c7-a25d-1b95f039366e)
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/7bd95a97-8ae7-4604-9133-6842370efd80)
 
 Within the realm of the API, I am poised to infuse my Authorization Model, injecting a robust layer of control. Notably, for this project, I have introduced a straightforward User Entity. It's worth acknowledging that in a genuine project, the AspNetUser Authentication entities would naturally come to the fore.
 
-Following the orchestration of a seamlessly flowing RESTful API, my trajectory leads me to introduce a ClassLibrary project, dedicated to crafting the Data Layer project. Within this domain, the canvas becomes adorned with Entities and Repositories, gracefully complemented by the UnitOfWorkFilter class, a component whose significance I shall demystify in an upcoming article. The final touch is the Context, weaving together the fabric of this data-driven symphony.
+Following the orchestration of a seamlessly flowing RESTful API, my trajectory leads me to introduce a ClassLibrary project, dedicated to crafting the Data Layer project. Within this domain, the canvas becomes adorned with Entities and Repositories, gracefully complemented by the UnitOfWorkFilter class. The final touch is the Context, weaving together the fabric of this data-driven symphony.
 In the JWTAuth API Project, as vividly demonstrated in the image below, I have strategically incorporated the AuthorizationContext. This addition serves the purpose of enabling user creation from the API into the database, employing the potent code-first technique. 
 
 Migration Authentication Entities
@@ -128,6 +130,7 @@ For making first migration for authentication entities we must put our PostgreSQ
   
 In the subsequent steps, as we proceed with the installation of the required NuGet packages and input the necessary requirements into the appsettings.json file, we will also incorporate Dependency Injection for our DataContext.
 To enhance the readability of the program code, I've organized the content into separate classes and integrated them into Program.cs. The structure of my project is as follows:
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/66c9416d-fdc9-4e90-8723-5b518965b4d5)
 
 
@@ -161,10 +164,10 @@ namespace JWTAuth.Helpers
             builder.Services.AddScoped<IConnectionStringProvider, ConnectionStringProvider>();
 
             serviceProvider.Dispose();
-      PostgreSqlBootstrap.Initialize();
+            PostgreSqlBootstrap.Initialize();
 
-     // After the creation of SurveyRepo in the DataLayer project, it is essential to add this line
-      builder.Services.AddScoped<ISurveyRepo, SurveyRepo>();
+            // After the creation of SurveyRepo in the DataLayer project, it is essential to add this line
+            builder.Services.AddScoped<ISurveyRepo, SurveyRepo>();
             builder.Services.UseOneTransactionPerHttpCall(appSettings);
 
         }
@@ -172,10 +175,11 @@ namespace JWTAuth.Helpers
 }
 ```
 
-Services Folder
+### Services Folder
 Houses all the custom services required for Dependency Injection (DI) within the solution.
-```ruby
+
 IConnectionStringProvider.cs
+```ruby
 namespace JWTAuth.Services
 {
     public interface IConnectionStringProvider
@@ -207,10 +211,11 @@ namespace JWTAuth.Services
 }
 ```
 
-Extensions Folder
+### Extensions Folder
 Includes extension classes.
 ServiceCollectionExtensions.cs
 This extension for the service collection manages the state of connections and transactions per HttpCall for PostgreSQL.
+
 ```ruby
 using JWTAuth.Helpers;
 using JWTAuth.Services;
@@ -247,17 +252,20 @@ namespace JWTAuth.Extensions
 ```
 
 Invoking ConfigHelper.ConfigureService(builder) within Program.cs
+
 ```ruby
 var builder = WebApplication.CreateBuilder(args);
 ConfigHelper.ConfigureService(builder);
 ```
-JWTAuth.Common Project
+
+## JWTAuth.Common Project
 Furthermore, we require an AppSettings.cs file, which we will place within a new class liberary project named JWTAuth.Common. This project serves as a repository for all common classes.
 
-Helpers Folder
+### Helpers Folder
 Contains various helper classes.
 AppSettings.cs
 This entity serves as a container for carrying configuration information throughout the solution.
+
 ```ruby
 namespace JWTAuth.Common.Helper
 {
@@ -273,17 +281,20 @@ namespace JWTAuth.Common.Helper
 The moment has come to migrate the authentication entities to PostgreSQL and generate corresponding tables. You can choose between utilizing the 'Package Manager Console' or 'Developer PowerShell.' To proceed, right-click on the intended project and select the 'Open Terminal' option.
 
 
+### Migration can be initiated by executing the following command:
 
-Migration can be initiated by executing the following command:
 ```ruby
 dotnet ef migrations add 'AuthFirstMigration'
 ```
+
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/0d6c6edb-a108-4694-aa7c-8c5a74866ea8)
+
 Upon executing this command, the system will generate a 'Migrations' folder within the JWTAuth project, containing the necessary migration classes.
 
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/d1c0fec6-6483-4c5e-80b5-b7e4fa07ee0b)
 
 By utilizing the command below, our database containing authentication tables will be created within PostgreSQL.
+
 ```ruby
 dotnet ef database update -c AuthorizeContexts
 ```
@@ -292,6 +303,7 @@ As previously mentioned, I intend to create a class library project for my DataL
 
 ## Demystifying JWT Configuration and Utilization
 For implementing JWT, the initial step involves adding JWTSecurityToken to the appsettings.json file, as depicted below:
+
 ```ruby
 "JwtSecurityToken": {
     "Key": "K17T6p+mYlBuIll6EOQDUmAdM6xmzeHOpE+O35zsAvw=",
@@ -315,8 +327,9 @@ Symmetric keys are typically shorter than asymmetric keys, making the token size
 
 •	Simple way to generate a random symmetric key: Convert.ToBase64String(Guid.NewGuid().ToByteArray())
 •	To generate a symmetric key for use with HMAC SHA-256, you can create a random byte array and then encode it as a Base64 string. Here's a simple example in C#:
+
 ```ruby
-using System;
+    using System;
     using System.Security.Cryptography;
     public static class JWTGenerator
     {
@@ -337,6 +350,7 @@ using System;
         }
     }
 ```
+
 •	Generate a New Key using OpenSSL
 If you're on Windows and don't have OpenSSL installed, you have a few options:
 o	Install OpenSSL:
@@ -353,8 +367,10 @@ With this configuration in place, you can effortlessly generate new encryption k
 
 Windows Power Shell
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/80a29ae2-5615-4950-98e6-e16e3e0c1c3d)
+
 Command Prompt
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/c4291d3e-6fe3-422c-970b-a7bbda964e44)
+
 Through the utilization of OpenSSL, you have the capability to generate various types of encryption keys.
 You have the flexibility to generate your new encryption key using any preferred method. All you need to do is replace your code with the value of the JwtSecurityToken's "Key" property in the appsettings.json file.
 
@@ -404,6 +420,7 @@ namespace JWTAuth.Helpers
 ```
 
 In the Program.cs file, I have incorporated the following line of code:
+
 ```ruby
 AuthenticationHelper.ConfigureService(builder);
 ```
@@ -461,6 +478,7 @@ namespace JWTAuth.Helpers
 ```
 
 In the Program.cs file, I have incorporated the following lines of codes:
+
 ```ruby
 AuthenticationHelper.ConfigureService(builder);
 SwaggerHelper.ConfigureService(builder.Services);
@@ -586,20 +604,20 @@ namespace JWTAuth.Controllers
         }
 
         // GET ALL: api/<SurveyController>
-[HttpGet]
-public async Task<IEnumerable<Survey>?> GetAll()
-{
-    var surveys = await _surveyRepo.GetAllAsync();
-    return surveys;
-}
-
-// GET api/<SurveyController>/5
-[HttpGet("{id}")]
-public async Task<Survey?> Get(int id)
-{
-    var survey = await _surveyRepo.GetAsync(1);
-    return survey;
-}
+        [HttpGet]
+        public async Task<IEnumerable<Survey>?> GetAll()
+        {
+            var surveys = await _surveyRepo.GetAllAsync();
+            return surveys;
+        }
+        
+        // GET api/<SurveyController>/5
+        [HttpGet("{id}")]
+        public async Task<Survey?> Get(int id)
+        {
+            var survey = await _surveyRepo.GetAsync(1);
+            return survey;
+        }
    }
 }
 ```
@@ -630,5 +648,4 @@ In culmination, I extend my sincerest gratitude to each esteemed reader who has 
 May the challenges you face be met with courage, the hurdles with determination, and the successes with a sense of accomplishment. In your endeavors, may you find the path to your goals illuminated, and may you continue to strive for excellence.
 Thank you for being a part of this discourse, and I send you my best wishes for every success that lies ahead.
 
-Warmest regards,
-
+**Warmest regards,**
