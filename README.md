@@ -118,7 +118,6 @@ Microsoft.EntityFrameworkCore.Design
 Npgsql.EntityFrameworkCore.PostgreSQL
 
 Microsoft.IdentityModel.Tokens
-
 Microsoft.AspNetCore.Authentication.JwtBearer
 
 
