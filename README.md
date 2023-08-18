@@ -374,7 +374,7 @@ Command Prompt
 Through the utilization of OpenSSL, you have the capability to generate various types of encryption keys.
 You have the flexibility to generate your new encryption key using any preferred method. All you need to do is replace your code with the value of the JwtSecurityToken's "Key" property in the appsettings.json file.
 
-### Setup JWT
+## Setup JWT
 To set up and effectively utilize JWT, it is imperative to install the following NuGet Packages within the RESTful API project:
 
 ***Microsoft.AspNetCore.Authentication.JwtBearer***
@@ -485,7 +485,7 @@ SwaggerHelper.ConfigureService(builder.Services);
 builder.Services.Configure<JwtSecurityTokenSettings>(builder.Configuration.GetSection("JwtSecurityToken"));
 ```
 
-### Controllers
+## Controllers
 After completing the setup and configuration requirements, my next step involves the creation of a JWTokenController. This controller will be responsible for generating tokens based on the information provided in the appsetting.json file and login credentials.
 The code implementation for this class could resemble the example below, or it may be implemented using alternative approaches based on specific requirements: 
 
