@@ -12,7 +12,7 @@ Here's an overview of JWT authentication in .NET Core:
 6.	Benefits of JWT
 7.	Security Considerations
 
-Orverviews
+## Orverviews
 1. Token Generation:
 JWT tokens are created and signed by the server.
 The token includes claims (key-value pairs) that provide information about the user, their roles, permissions, and more.
@@ -97,7 +97,7 @@ Store secrets securely and protect against token leakage.
 Use HTTPS to encrypt communication.
 Limit the amount of sensitive information stored in the token.
 
-Here's a high-level example of how JWT authentication is configured in ASP.NET Core
+### Here's a high-level example of how JWT authentication is configured in ASP.NET Core
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/4a3c1f35-1b78-42c7-a25d-1b95f039366e)
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/7bd95a97-8ae7-4604-9133-6842370efd80)
 
@@ -130,9 +130,9 @@ In the subsequent steps, as we proceed with the installation of the required NuG
 To enhance the readability of the program code, I've organized the content into separate classes and integrated them into Program.cs. The structure of my project is as follows:
 ![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/66c9416d-fdc9-4e90-8723-5b518965b4d5)
 
-```ruby
-Helpers Folder
-```
+
+## Helpers Folder
+
 Contains various helper classes.
 ConfigHelper.cs
 Is a provider class designed to facilitate the addition of DbContext and other services through Dependency Injection (DI)
@@ -275,4 +275,31 @@ The moment has come to migrate the authentication entities to PostgreSQL and gen
 
 
 Migration can be initiated by executing the following command:
+```ruby
 dotnet ef migrations add 'AuthFirstMigration'
+```
+![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/0d6c6edb-a108-4694-aa7c-8c5a74866ea8)
+Upon executing this command, the system will generate a 'Migrations' folder within the JWTAuth project, containing the necessary migration classes.
+![image](https://github.com/farzadniknam/JWTAuth/assets/45637787/d1c0fec6-6483-4c5e-80b5-b7e4fa07ee0b)
+By utilizing the command below, our database containing authentication tables will be created within PostgreSQL.
+```ruby
+dotnet ef database update -c AuthorizeContexts
+```
+
+As previously mentioned, I intend to create a class library project for my DataLayer, housing main entities, the Context, and repositories. Accordingly, I will generate the 'Survey Entity' and other pertinent elements within this project. Subsequently, I will employ a similar technique to the one utilized for migrating authentication entities to our PostgreSQL database.
+
+## Demystifying JWT Configuration and Utilization
+For implementing JWT, the initial step involves adding JWTSecurityToken to the appsettings.json file, as depicted below:
+```ruby
+"JwtSecurityToken": {
+    "Key": "K17T6p+mYlBuIll6EOQDUmAdM6xmzeHOpE+O35zsAvw=",
+    "Issuer": "JWTAuthServer",
+    "Audience": "JWTAuthClient",
+    "Subject": "JWTAuthToken"
+  },
+```
+
+The key used in the JwtSecurityToken configuration's Key property should be a secret key that is used to sign the JWT tokens. This secret key should be kept confidential and not shared with others. The type of key you use depends on the algorithm you choose for signing the tokens.
+JWT supports different algorithms for token signing, including symmetric and asymmetric algorithms:
+1.	Symmetric Key (We are going to use Symmetric Key in this article)
+2.	Asymmetric Key Pair
